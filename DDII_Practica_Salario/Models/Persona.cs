@@ -10,6 +10,8 @@ namespace DDII_Practica_Salario.Models
     {
         private string nombre;
         private string apellidos;
+        private float horas;
+        private float precioHora;
 
         public Persona(string nombre, string apellidos)
         {
@@ -19,12 +21,17 @@ namespace DDII_Practica_Salario.Models
 
         public string Apellidos { get => apellidos; set => apellidos = value; }
         public string Nombre { get => nombre; set => nombre = value; }
+        public float Horas { get => horas; set => horas = value; }
+        public float PrecioHora { get => precioHora; set => precioHora = value; }
 
-        
+        public float salario()
+        {
+            return (horas * precioHora) * ((100 - Program.IMPUESTOS) / 100);
+        }
+
         public string toString()
         {
-            return Apellidos + ", " + nombre;
+            return nombre + " " + apellidos;
         }
-        
     }
 }
